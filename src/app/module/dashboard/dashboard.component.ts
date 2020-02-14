@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   private getCausesList = () => {
     this.api.getList(this.url.urlConfig().allCauses).subscribe(causes => {
       this.spinner = false;
+      console.log(causes);
       this.causesList = causes;
     }, error => {
       this.spinner = false;
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
   }
 
   public donateNow(causes: Cause) {
-    sessionStorage.setItem('accountNumber', JSON.stringify(causes));
+    sessionStorage.setItem('causes', JSON.stringify(causes));
     this.router.navigate(['/home/donation']);
   }
 
