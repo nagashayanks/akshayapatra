@@ -1,5 +1,6 @@
 <div class="cause-container">
-    <div class="row">
+    <div class="heading-container">Scheme Detail</div>
+    <div class="row container-padding">
         <div class="col-md-4 pb-10">
             <div class="image">
                 <img src="assets/images/causes/cause-education.jpg" alt="">
@@ -25,7 +26,8 @@
     </div>
 </div>
 <div class="donate-form-container" *ngIf="donateFlag">
-    <form [formGroup]="donateForm" (ngSubmit)="sendPay()">
+    <div class="heading-container">Donate</div>
+    <form [formGroup]="donateForm" (ngSubmit)="sendPay()" class="container-padding">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -88,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 submit-container">
                 <div class="form-group">
                     <button mat-raised-button class="btn btn-primary border-none ing-theme-color mr-2">Pay</button>
                     <button type="button" mat-raised-button class="btn btn-primary border-none ing-theme-color"
@@ -97,4 +99,9 @@
             </div>
         </div>
     </form>
+    <div class="pdf-container container-padding">
+        Tax benefit certicate has been generated. 
+        <button class="btn btn-primary">View Pdf</button> 
+        <button class="btn btn-primary">Download Pdf</button> 
+    </div>
 </div>

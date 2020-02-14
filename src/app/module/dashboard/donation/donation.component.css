@@ -1,8 +1,10 @@
 .cause-container, .donate-form-container{
     background-color: #fff;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    padding: 30px 10px;
     margin: 10px;
+}
+.container-padding {
+    padding: 10px 10px 30px 10px;
 }
 .image{
     text-align: center;
@@ -18,4 +20,13 @@
 }
 .donate-form-container{
     padding-top: 10px;
+}
+.submit-container{
+    text-align: center;
+    margin-top: 2%;
+}
+.heading-container {
+    background: #115c9b;
+    color: #fff;
+    padding: 10px;
 }
