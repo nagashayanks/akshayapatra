@@ -20,3 +20,17 @@ export interface Cause {
     imageUrl: string;
 
  }
+export interface Donationdata {
+
+    name: string;
+    panNumber: string;
+    mobile: number;
+    email: string;
+    paymentMode: string;
+    date: string;
+    schemeName: string;
+    description: string;
+    amount: number;
+    taxBenefitAmount: number;
+    taxBenefitDescription: number;
+ }

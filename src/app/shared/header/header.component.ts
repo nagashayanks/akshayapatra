@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public logout(): void {
     sessionStorage.clear();
     this.notification.clearMessages();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {
