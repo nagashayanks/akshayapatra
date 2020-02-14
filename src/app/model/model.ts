@@ -4,11 +4,12 @@ export interface CurrentUser {
     userName: string;
 }
 
-export interface DoctorSummary {
-    doctorName: string;
-    rating: number;
-   specialization: string;
-   consultationFees: number;
+export interface SchemaSummary {
+    schemeName: string;
+    description: string;
+    amount: number;
+    taxBenefitPercentage: number;
+    taxBenefitDescription: string;
 }
 export interface BookedslotAppointments {
 
