@@ -54,6 +54,22 @@
             "taxBenefitDescription": "test",
             "imageUrl": ""
         }
+    ],
+    "schemaList": [
+        {
+            "schemeName": "djhfj",
+            "description": "dfbsddfddvzsaddxjkfn",
+            "amount": 5478,
+            "taxBenefitPercentage": 9,
+            "taxBenefitDescription": "jhdbsjhdjshjdbs"
+        },
+        {
+            "schemeName": "djh",
+            "description": "dfsdjhfgshgfdb",
+            "amount": 7478,
+            "taxBenefitPercentage": 5,
+            "taxBenefitDescription": "jhdbsjhdjshjdbs"
+        }
     ]
-
 }
+

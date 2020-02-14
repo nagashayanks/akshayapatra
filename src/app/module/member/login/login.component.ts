@@ -52,13 +52,12 @@ export class LoginComponent implements OnInit {
       this.api.postCall(this.url.urlConfig().userLogin, postObject, 'post').subscribe(user => {
         if (user.statusCode === 200) {
           const userDetails = {
-            userName: user.doctorName,
-            userId: user.doctorId
+            userId: user.adminId
           };
           /* Stored the user details in session storage */
           sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
           this.spinner = false;
-          this.router.navigate(['/doctor']);
+          this.router.navigate(['/admin']);
         } else {
           this.common.alertConfig = this.common.modalConfig(
             'Error', this.userConstant.messageConstant()[user.statusCode],

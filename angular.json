@@ -36,7 +36,8 @@
               "src/assets/js/jquery-1.11.1.min.js",
               "src/assets/js/bootstrap.min.js",
               "src/assets/js//owl.carousel.min.js",
-              "src/assets/js/main-carousel.js"
+              "src/assets/js/main-carousel.js",
+              "node_modules/chart.js/dist/Chart.js"
             ]
           },
           "configurations": {

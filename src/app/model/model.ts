@@ -1,7 +1,6 @@
 
 export interface CurrentUser {
     userId: number;
-    userName: string;
 }
 
 export interface SchemaSummary {

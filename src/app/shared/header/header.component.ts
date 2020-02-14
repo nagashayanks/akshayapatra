@@ -26,8 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userDetails = userData;
       } else {
         this.userDetails = {
-          userId: null,
-          userName: null,
+          userId: null
 
         };
       }

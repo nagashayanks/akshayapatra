@@ -11,25 +11,46 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  schemaList;
   gridColumns = [];
-
+  pagination = true;
+  sorting = true;
+  pageLinks = 5;
+  schemaList: SchemaSummary[];
+  data: any;
   constructor(
     private api: Service,
     private url: UrlConfig,
     private common: CommonService,
     private router: Router
-  ) { }
-
+  ) {
+    this.data = {
+      labels: ['A', 'B', 'C'],
+      datasets: [
+          {
+              data: [300, 50, 100],
+              backgroundColor: [
+                  '#FF6384',
+                  '#36A2EB',
+                  '#FFCE56'
+              ],
+              hoverBackgroundColor: [
+                  '#FF6384',
+                  '#36A2EB',
+                  '#FFCE56'
+              ]
+          }]
+      };
+  }
   ngOnInit() {
+    this.getSchemadetails();
   }
   /**
    * method to fetch all doctor details
    */
   public getSchemadetails() {
     this.generateGridColumn();
-    this.api.getList(this.url.urlConfig().schemes).subscribe(searchData => {
-      this.schemaList = searchData;
+    this.api.getList(this.url.urlConfig().schemes).subscribe(data => {
+      this.schemaList = data;
 
     });
   }
@@ -39,23 +60,25 @@ export class DashboardComponent implements OnInit {
     this.gridColumns = [
       {
         colName: 'Scheme Name',
-        rowName: 'doctorName',
+        rowName: 'schemeName',
       }, {
         colName: 'Description',
-        rowName: 'rating',
+        rowName: 'description',
       }, {
         colName: 'Amount',
-        rowName: 'specialization',
+        rowName: 'amount',
       },
       {
         colName: 'Tax Benifit Percentage',
-        rowName: 'consultationFee',
+        rowName: 'taxBenefitPercentage',
       },
       {
         colName: 'Tax Benifit Description',
-        rowName: 'consultationFee',
+        rowName: 'taxBenefitDescription',
       }
     ];
   }
 
+  selectData(event) {
+  }
 }
