@@ -1,1 +1,100 @@
-<p>donation works!</p>
+<div class="cause-container">
+    <div class="row">
+        <div class="col-md-4 pb-10">
+            <div class="image">
+                <img src="assets/images/causes/cause-education.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-5 pb-10">Scheme Name: <strong>{{causeDetail.schemeName}}</strong></div>
+                <div class="col-md-3 pb-10">Amount: <strong>{{causeDetail.amount | currency: 'INR'}}</strong></div>
+                <div class="col-md-4 pb-10">Tax Benefit Amount:
+                    <strong>{{causeDetail.taxBenefitAmount | currency: 'INR'}}</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pb-10">Tax Benefit : <strong>{{causeDetail.taxBenefitDescription}}</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pb-10">About Scheme: <strong>{{causeDetail.description}}</strong></div>
+            </div>
+        </div>
+        <div class="donate-button">
+            <button class="btn btn-primary" (click)="showDonateForm()">Donate</button>
+        </div>
+    </div>
+</div>
+<div class="donate-form-container" *ngIf="donateFlag">
+    <form [formGroup]="donateForm" (ngSubmit)="sendPay()">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="name">Name: <strong class="asterisk">*</strong></label>
+                    <input type="text" class="form-control" placeholder="Name *" id="name"
+                        name="name" formControlName="name" required>
+                    <div class="error"
+                        *ngIf="submitted  && donate.name.errors  && donate.name.errors.required">
+                        Name is <strong>required</strong>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="mobile">Mobile Number: <strong class="asterisk">*</strong></label>
+                    <input type="text" class="form-control" placeholder="Mobile Number *" id="mobile" name="mobile"
+                        formControlName="mobile" required numbersOnly maxlength="10">
+                    <div class="error" *ngIf="submitted  && donate.mobile.errors  && donate.mobile.errors.required">
+                        Mobile number is <strong>required</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="password">Email: <strong class="asterisk">*</strong></label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email *"
+                        formControlName="email" required />
+                    <div class="error" *ngIf="submitted  && donate.email.errors  && donate.email.errors.required">
+                        Email is <strong>required</strong>
+                    </div>
+                    <div class="error" *ngIf="submitted  && donate.email.errors && donate.email.errors.email">
+                        Email must be a valid email address</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="panNumber">Pan Number: <strong class="asterisk">*</strong></label>
+                    <input type="text" class="form-control" placeholder="Pan Number *" id="panNumber"
+                        name="panNumber" formControlName="panNumber" required  maxlength="10">
+                    <div class="error"
+                        *ngIf="submitted  && donate.panNumber.errors  && donate.panNumber.errors.required">
+                        Pan Number is <strong>required</strong>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="paymentMode">Payment Mode: <strong class="asterisk">*</strong></label>
+                    <select class="form-control" name="paymentMode" formControlName="paymentMode" id="paymentMode">
+                        <option value="">--Select Payment--</option>
+                        <option value="PAYTM">PayTm</option>
+                        <option value="PHONEPE">Phonepe</option>
+                    </select>
+                    <div class="error" *ngIf="submitted  && donate.paymentMode.errors  && donate.paymentMode.errors.required">
+                        Payment Mode is <strong>required</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button mat-raised-button class="btn btn-primary border-none ing-theme-color mr-2">Pay</button>
+                    <button type="button" mat-raised-button class="btn btn-primary border-none ing-theme-color"
+                        (click)="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

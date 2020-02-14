@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  public donateNow(causes: Cause){
-    sessionStorage.setItem('accountNumber', JSON.stringify(causes));
+  public donateNow(causes: Cause) {
+    sessionStorage.setItem('causes', JSON.stringify(causes));
     this.router.navigate(['/home/donation']);
   }
 
