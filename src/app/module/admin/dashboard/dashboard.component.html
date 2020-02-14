@@ -1,0 +1,11 @@
+<div class="container ht" >
+    <div>
+        <p-chart type="pie" [data]="data" (onDataSelect)="selectData($event)"  height="250"></p-chart>
+    </div>
+    <div class="ui-grid ui-grid-responsive ui-fluid">
+        <app-grid [gridData]="schemaList" [gridColumnDefinition]="gridColumns"
+        (getAction)="getAction($event)" [sorting]="sorting" [pageLinks]="pageLinks" [pagination]="pagination"
+        *ngIf="schemaList?.length">
+    </app-grid>
+        </div>
+    </div>

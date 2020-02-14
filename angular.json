@@ -24,13 +24,21 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.css"
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/style.css",
+              "src/styles.css",
+              "src/assets/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-1.11.1.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js//owl.carousel.min.js",
+              "src/assets/js/main-carousel.js",
+              "node_modules/chart.js/dist/Chart.js"
+            ]
           },
           "configurations": {
             "production": {

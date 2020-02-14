@@ -7,11 +7,20 @@ const routes: Routes = [
     {
 
       path: '',
-      loadChildren: () => import(`./module/member/member.module`).then(m => m.MemberModule)
+      loadChildren: () => import(`./module/dashboard/dashboard.module`).then(m => m.DashboardModule)
+    },
+    {
+
+      path: 'home',
+      loadChildren: () => import(`./module/dashboard/dashboard.module`).then(m => m.DashboardModule)
     },
     {
       path: 'login',
       loadChildren: () => import(`./module/member/member.module`).then(m => m.MemberModule)
+    },
+    {
+      path: 'admin',
+      loadChildren: () => import(`./module/admin/admin.module`).then(m => m.AdminModule)
     }
 ];
 
