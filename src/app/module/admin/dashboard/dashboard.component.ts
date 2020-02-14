@@ -79,5 +79,6 @@ export class DashboardComponent implements OnInit {
   }
 
   selectData(event) {
+    this.getSchemadetails();
   }
 }
