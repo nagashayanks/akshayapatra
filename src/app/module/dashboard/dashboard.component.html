@@ -183,15 +183,15 @@
           <div class="row" >
               <div class="col-md-3 col-sm-6" *ngFor="let cause of causesList" >
                   <div class="cause">
-                      <img src="{{cause.imageUrl}}" alt="cause image" class="cause-img">
+                      <img src="{{cause.imageUrl}}" alt="" class="cause-img" height="150">
                       <div class="progress cause-progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                          {{cause.amount}}
+                          {{cause.amount}}Rs
                         </div>
                       </div>
                       <h4 class="cause-title"><a href="javascript:void(0);"> {{cause.schemeName}}</a></h4>
 
-                      <div class="cause-details">
+                      <div class="cause-details text">
                         {{cause.description}}
                       </div>
 
