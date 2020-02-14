@@ -14,6 +14,8 @@ export class DonationComponent implements OnInit {
   donateForm: FormGroup;
   submitted = false;
   donateFlag = false;
+  spinner = false;
+  pdfFlag = false;
   constructor(
     private api: Service,
     private url: UrlConfig,
@@ -35,10 +37,41 @@ export class DonationComponent implements OnInit {
   /*  Access to Donate form fields */
   get donate() { return this.donateForm.controls; }
 
+   /*  Send the payment Donator */
   public sendPay() {
     this.submitted = true;
+    this.pdfFlag = false;
     if (this.donateForm.valid) {
-      
+      this.donateForm.value.schemeId = this.causeDetail.schemeId;
+      this.donateForm.value.mobile = Number(this.donateForm.value.mobile);
+      /* Api call*/
+      this.api.postCall(this.url.urlConfig().donate, this.donateForm.value, 'post').subscribe(appointment => {
+        if (appointment.statusCode === 200) {
+          this.spinner = false;
+          this.common.alertConfig = this.common.modalConfig(
+            'Error', 'Thanks for your support. Please check your mail for tax benefit certificate',
+            true, [{ name: 'Ok' }]
+          );
+          this.pdfFlag = true;
+        } else {
+          this.common.alertConfig = this.common.modalConfig(
+            'Error', 'Sorry, There are some problems with your payment',
+            true, [{ name: 'Ok' }]
+          );
+          this.spinner = false;
+        }
+      });
+    }
+  }
+
+  /* Modal Action
+  @param Ok modal has been closed
+ */
+  public modalAction(action: string): void {
+    if (action === 'Ok') {
+      this.spinner = false;
+      this.common.alertConfigDefaultValue();
+      this.pdfFlag = false;
     }
   }
 
@@ -49,6 +82,7 @@ export class DonationComponent implements OnInit {
   public showDonateForm() {
     this.donateFlag = !this.donateFlag;
   }
+
   ngOnInit() {
     this.causeDetail = JSON.parse(sessionStorage.getItem('causes'));
     console.log(this.causeDetail);
