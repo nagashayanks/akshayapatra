@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
    */
   public getSchemadetails() {
     this.generateGridColumn();
-    this.api.getList(this.url.urlConfig().doctors).subscribe(searchData => {
+    this.api.getList(this.url.urlConfig().schemes).subscribe(searchData => {
       this.schemaList = searchData;
 
     });
