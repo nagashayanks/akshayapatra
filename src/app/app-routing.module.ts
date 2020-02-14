@@ -10,6 +10,11 @@ const routes: Routes = [
       loadChildren: () => import(`./module/dashboard/dashboard.module`).then(m => m.DashboardModule)
     },
     {
+
+      path: 'home',
+      loadChildren: () => import(`./module/dashboard/dashboard.module`).then(m => m.DashboardModule)
+    },
+    {
       path: 'login',
       loadChildren: () => import(`./module/member/member.module`).then(m => m.MemberModule)
     },

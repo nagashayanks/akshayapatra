@@ -11,8 +11,8 @@ export class UrlConfig {
     urlMock() {
         return this.url = {
             userLogin: 'http://10.117.189.111:9090/akshayapathra/' + 'doctors',
-            doctorHistory: this.apiMock + 'schemaList',
-            schemes:  this.apiMock + 'schemaList',
+            schemes:  this.apiMock + 'schemes',
+            allCauses:  this.apiMock + 'viewAllDonation'
         };
     }
     /* url config with url Server list */
@@ -20,6 +20,7 @@ export class UrlConfig {
         return this.url = {
             userLogin: this.apiHost + 'admins',
             schemes:  this.apiHost + 'schemes',
+            allCauses:  this.apiMock + 'viewAllDonation'
         };
     }
     /* return url */

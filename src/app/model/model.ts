@@ -10,14 +10,13 @@ export interface SchemaSummary {
     taxBenefitPercentage: number;
     taxBenefitDescription: string;
 }
-export interface BookedslotAppointments {
-
-    hospitalName: string;
-    date: string;
-    slotTime: string;
-    patientId: number;
-    patientName: string;
-    email: string;
-    mobile: number;
+export interface Cause {
+    schemeId: number;
+    schemeName: string;
+    description: string;
+    amount: number;
+    taxBenefitAmount: number;
+    taxBenefitDescription: string;
+    imageUrl: string;
 
  }
