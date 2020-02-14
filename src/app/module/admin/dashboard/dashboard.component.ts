@@ -49,7 +49,8 @@ export class DashboardComponent implements OnInit {
    */
   public getSchemadetails() {
     this.generateGridColumn();
-    this.api.getList(this.url.urlConfig().schemes).subscribe(data => {
+    const params = `/${1}`;
+    this.api.getList(this.url.urlConfig().schemes.concat(params)).subscribe(data => {
       this.schemaList = data;
 
     });
@@ -61,20 +62,18 @@ export class DashboardComponent implements OnInit {
       {
         colName: 'Scheme Name',
         rowName: 'schemeName',
-      }, {
-        colName: 'Description',
-        rowName: 'description',
-      }, {
-        colName: 'Amount',
-        rowName: 'amount',
       },
       {
-        colName: 'Tax Benifit Percentage',
-        rowName: 'taxBenefitPercentage',
+        colName: 'Date',
+        rowName: 'date',
       },
       {
-        colName: 'Tax Benifit Description',
-        rowName: 'taxBenefitDescription',
+        colName: 'User Name',
+        rowName: 'userName',
+      },
+       {
+        colName: 'Payment Mode',
+        rowName: 'paymentMode',
       }
     ];
   }
