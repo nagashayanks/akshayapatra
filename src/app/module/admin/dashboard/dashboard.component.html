@@ -2,7 +2,7 @@
     <div>
         <p-chart type="pie" [data]="data" (onDataSelect)="selectData($event)"  height="250"></p-chart>
     </div>
-    <div class="ui-grid ui-grid-responsive ui-fluid">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="schemaList?.length">
         <app-grid [gridData]="schemaList" [gridColumnDefinition]="gridColumns"
         (getAction)="getAction($event)" [sorting]="sorting" [pageLinks]="pageLinks" [pagination]="pagination"
         *ngIf="schemaList?.length">
