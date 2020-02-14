@@ -32,5 +32,5 @@ export interface Donationdata {
     description: string;
     amount: number;
     taxBenefitAmount: number;
-    taxBenefitDescription: number;
+    taxBenefitDescription: string;
  }

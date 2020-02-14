@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cause } from 'src/app/model/model';
+import { Cause, Donationdata } from 'src/app/model/model';
 import { Service } from 'src/app/service/service';
 import { UrlConfig } from 'src/app/service/url-config';
 import { CommonService } from 'src/app/service/common-service';
@@ -16,6 +16,7 @@ export class DonationComponent implements OnInit {
   donateFlag = false;
   spinner = false;
   pdfFlag = false;
+  DonationTaxBenefitPdf:Donationdata[];
   constructor(
     private api: Service,
     private url: UrlConfig,
