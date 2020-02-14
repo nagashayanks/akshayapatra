@@ -5,7 +5,6 @@ import { UrlConfig } from 'src/app/service/url-config';
 import { CommonService } from 'src/app/service/common-service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import domtoimage from 'dom-to-image';
 @Component({
   selector: 'app-donation',
@@ -20,6 +19,7 @@ export class DonationComponent implements OnInit {
   spinner = false;
   pdfFlag = false;
   taxCertificate: any;
+  viewFlag = false;
   @ViewChild('content', { static: false }) content: ElementRef;
 
   constructor(
@@ -45,9 +45,11 @@ export class DonationComponent implements OnInit {
 
   /*  Send the payment Donator */
   public sendPay() {
+    this.viewFlag = false;
     this.submitted = true;
     this.pdfFlag = false;
     if (this.donateForm.valid) {
+      this.spinner = true;
       this.donateForm.value.schemeId = this.causeDetail.schemeId;
       this.donateForm.value.mobile = Number(this.donateForm.value.mobile);
       /* Api call*/
@@ -56,7 +58,7 @@ export class DonationComponent implements OnInit {
           this.spinner = false;
           this.taxCertificate = certificate;
           this.common.alertConfig = this.common.modalConfig(
-            'Error', 'Thanks for your support. Please check your mail for tax benefit certificate',
+            'Error', 'Thanks for your support. Please check your mail for confirmation',
             true, [{ name: 'Ok' }]
           );
           this.pdfFlag = true;
@@ -78,7 +80,7 @@ export class DonationComponent implements OnInit {
     if (action === 'Ok') {
       this.spinner = false;
       this.common.alertConfigDefaultValue();
-      this.pdfFlag = false;
+      this.cancel();
     }
   }
 
@@ -89,9 +91,13 @@ export class DonationComponent implements OnInit {
   public showDonateForm() {
     this.donateFlag = !this.donateFlag;
   }
-  public downloadPdf() {
-    const node = this.content.nativeElement;
+  viewPdf() {
+    this.viewFlag = true;
     this.content.nativeElement.style.display = 'block';
+  }
+  public downloadPdf() {
+    this.spinner = true;
+    const node = this.content.nativeElement;
     let img;
     let filename;
     let newImage;
@@ -116,7 +122,7 @@ export class DonationComponent implements OnInit {
           filename = 'mypdf_' + '.pdf';
           doc.save(filename);
         };
-        // this.content.nativeElement.style.display = 'none';
+        this.spinner = false;
       })
       .catch( error => {
         // Error Handling
