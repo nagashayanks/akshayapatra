@@ -17,9 +17,32 @@ describe('DonationComponent', () => {
     navigate: jasmine.createSpy('navigate')
   };
   const MockUserService = {
+    modalConfig: () => ({
+      header: '',
+      message: '',
+      modalShow: '',
+      button: []
+    }),
+    alertConfigDefaultValue: () => ({
+      header: '',
+      message: '',
+      modalShow: '',
+      button: []
+    }),
     postCall(url: string, data: any, type: string) {
       return of({
-
+        userId: 123,
+        name: 'abc',
+        panNumber: 'PXER20009T',
+        mobile: 9876543210,
+        email: 'ta@gmail.com',
+        paymentMode: 'PAYTM',
+        date: '22-12-2023',
+        schemeName: 'Hunger',
+        description: 'hunger fund',
+        amount: 12000.00,
+        taxBenefitAmount: 1000,
+        taxBenefitDescription: 'benefit allowed'
       });
     },
   };
@@ -41,5 +64,10 @@ describe('DonationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('Should check modalAction', () => {
+    const action =  'Ok';
+    component.modalAction(action);
+    expect(action).toEqual(action);
   });
 });
