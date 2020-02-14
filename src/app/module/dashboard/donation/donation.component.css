@@ -66,3 +66,6 @@
 #contentToConvert{
     display: none;
 }
+.min{
+    min-height: 450px;
+}
