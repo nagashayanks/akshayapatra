@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/service/service';
 import { UrlConfig } from 'src/app/service/url-config';
 import { SchemaSummary } from 'src/app/model/model';
-import { CommonService } from 'src/app/service/common-service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,52 +15,33 @@ export class DashboardComponent implements OnInit {
   pageLinks = 5;
   schemaList: SchemaSummary[];
   data: any;
+  chartlist;
+  currtid;
+
   constructor(
     private api: Service,
-    private url: UrlConfig,
-    private common: CommonService,
-    private router: Router
+    private url: UrlConfig
   ) {
-    this.data = {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-          {
-              data: [300, 50, 100],
-              backgroundColor: [
-                  '#FF6384',
-                  '#36A2EB',
-                  '#FFCE56'
-              ],
-              hoverBackgroundColor: [
-                  '#FF6384',
-                  '#36A2EB',
-                  '#FFCE56'
-              ]
-          }]
-      };
+
   }
   ngOnInit() {
-    this.getSchemadetails();
+    this.getPiechartData();
   }
   /**
-   * method to fetch all doctor details
+   * method to fetch all schema details
    */
-  public getSchemadetails() {
+  public getSchemadetails(id: number) {
     this.generateGridColumn();
-    const params = `/${1}`;
+    const params = `/${id}`;
     this.api.getList(this.url.urlConfig().schemes.concat(params)).subscribe(data => {
       this.schemaList = data;
-
+      console.log('data', data);
     });
   }
 
   /* configure the grid columns */
   private generateGridColumn(): void {
     this.gridColumns = [
-      {
-        colName: 'Scheme Name',
-        rowName: 'schemeName',
-      },
       {
         colName: 'Date',
         rowName: 'date',
@@ -71,14 +50,56 @@ export class DashboardComponent implements OnInit {
         colName: 'User Name',
         rowName: 'userName',
       },
-       {
+      {
+        colName: 'Scheme Name',
+        rowName: 'schemeName',
+      },
+      {
         colName: 'Payment Mode',
         rowName: 'paymentMode',
+      },
+      {
+        colName: 'Email Id',
+        rowName: 'email',
       }
     ];
   }
 
   selectData(event) {
-    this.getSchemadetails();
+    this.currtid = this.chartlist[event.element._index];
+    console.log(this.currtid.schemeId);
+    this.getSchemadetails(this.currtid.schemeId);
   }
+
+  getPiechartData() {
+    this.api.getList(this.url.urlConfig().analysis).subscribe(response => {
+      this.data = response;
+      this.chartlist = response;
+      console.log('pie', response);
+      const name: any = [];
+      const values = [];
+      response.forEach(element => {
+        name.push(element.y);
+        values.push(element.name);
+      });
+      this.data = {
+        labels: values,
+        datasets: [
+          {
+            data: name,
+            backgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56'
+            ],
+            hoverBackgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56'
+            ]
+          }]
+      };
+    });
+  }
+
 }

@@ -4,11 +4,12 @@ export interface CurrentUser {
 }
 
 export interface SchemaSummary {
+    schemeId: number;
     schemeName: string;
-    description: string;
-    amount: number;
-    taxBenefitPercentage: number;
-    taxBenefitDescription: string;
+    userName: string;
+    paymentMode: string;
+    date: any;
+    email: string;
 }
 export interface Cause {
     schemeId: number;
@@ -19,7 +20,7 @@ export interface Cause {
     taxBenefitDescription: string;
     imageUrl: string;
 
- }
+}
 export interface Donationdata {
 
     name: string;
@@ -33,4 +34,9 @@ export interface Donationdata {
     amount: number;
     taxBenefitAmount: number;
     taxBenefitDescription: number;
- }
+}
+export interface Pie {
+    schemeId: number;
+    name: string;
+    y: number;
+}

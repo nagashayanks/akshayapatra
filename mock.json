@@ -70,6 +70,19 @@
             "taxBenefitPercentage": 5,
             "taxBenefitDescription": "jhdbsjhdjshjdbs"
         }
-    ]
+    ],
+    "piechart": [
+        {
+        "schemeId": 1,
+        "name": "poverty",
+        "y": 70
+        },
+        {
+        "schemeId": 2,
+        "name": "jksdfhsd",
+        "y": 30
+        }
+        ]
 }
 
+    
