@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
   private getCausesList = () => {
     this.api.getList(this.url.urlConfig().allCauses).subscribe(causes => {
       this.spinner = false;
-      console.log(causes);
       this.causesList = causes;
     }, error => {
       this.spinner = false;
