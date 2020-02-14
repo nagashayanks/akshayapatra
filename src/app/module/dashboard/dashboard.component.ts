@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  public donateNow(causes: Cause){
+  public donateNow(causes: Cause) {
     sessionStorage.setItem('accountNumber', JSON.stringify(causes));
     this.router.navigate(['/home/donation']);
   }
