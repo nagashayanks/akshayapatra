@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="donate-button">
-            <button class="btn btn-primary" (click)="showDonateForm()">Donate</button>
+            <button class="btn btn-primary btn-success border-none" (click)="showDonateForm()">Donate</button>
         </div>
     </div>
 </div>
@@ -32,10 +32,9 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="name">Name: <strong class="asterisk">*</strong></label>
-                    <input type="text" class="form-control" placeholder="Name *" id="name"
-                        name="name" formControlName="name" required>
-                    <div class="error"
-                        *ngIf="submitted  && donate.name.errors  && donate.name.errors.required">
+                    <input type="text" class="form-control" placeholder="Name *" id="name" name="name"
+                        formControlName="name" required>
+                    <div class="error" *ngIf="submitted  && donate.name.errors  && donate.name.errors.required">
                         Name is <strong>required</strong>
                     </div>
 
@@ -68,8 +67,8 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="panNumber">Pan Number: <strong class="asterisk">*</strong></label>
-                    <input type="text" class="form-control" placeholder="Pan Number *" id="panNumber"
-                        name="panNumber" formControlName="panNumber" required  maxlength="10">
+                    <input type="text" class="form-control" placeholder="Pan Number *" id="panNumber" name="panNumber"
+                        formControlName="panNumber" required maxlength="10">
                     <div class="error"
                         *ngIf="submitted  && donate.panNumber.errors  && donate.panNumber.errors.required">
                         Pan Number is <strong>required</strong>
@@ -85,23 +84,61 @@
                         <option value="PAYTM">PayTm</option>
                         <option value="PHONEPE">Phonepe</option>
                     </select>
-                    <div class="error" *ngIf="submitted  && donate.paymentMode.errors  && donate.paymentMode.errors.required">
+                    <div class="error"
+                        *ngIf="submitted  && donate.paymentMode.errors  && donate.paymentMode.errors.required">
                         Payment Mode is <strong>required</strong>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 submit-container">
                 <div class="form-group">
-                    <button mat-raised-button class="btn btn-primary border-none ing-theme-color mr-2">Pay</button>
-                    <button type="button" mat-raised-button class="btn btn-primary border-none ing-theme-color"
+                    <button mat-raised-button class="btn btn-primary btn-success border-none">Pay</button>
+                    <button type="button" mat-raised-button class="btn btn-primary btn-danger border-none"
                         (click)="cancel()">Cancel</button>
                 </div>
             </div>
         </div>
     </form>
-    <div class="pdf-container container-padding">
-        Tax benefit certicate has been generated. 
-        <button class="btn btn-primary">View Pdf</button> 
-        <button class="btn btn-primary">Download Pdf</button> 
+    <div class="pdf-container container-padding" >
+        <p>
+            Tax benefit certicate has been generated.
+            <button class="btn btn-primary btn-danger border-none" (click)="downloadPdf('')">Download Pdf</button> </p>
+        <!-- <button class="btn btn-primary">View Pdf</button>  -->
+    </div>
+</div>
+
+<div class="cause-container pdf-container" #content id="contentToConvert">
+    <div class="heading-container pdf-header">Helping Hand</div>
+    <div class="row container-padding">
+        <div class="certificate-header">Tax certicate <span class="date">Date: <strong>{{taxCertificate?.date}}</strong></span></div>
+        <div class="col-md-4 pb-10">
+            <div class="image">
+                <img src="assets/images/causes/cause-education.jpg" alt="" width="200px">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-3 pb-10">Name: <strong>{{taxCertificate?.name}}</strong></div>
+                <div class="col-md-3 pb-10">Mobile: <strong>{{taxCertificate?.mobile}}</strong></div>
+                <div class="col-md-3 pb-10">email:
+                    <strong>{{taxCertificate?.email }}</strong></div>
+                <div class="col-md-3 pb-10">Payment Mode:
+                    <strong>{{taxCertificate?.paymentMode }}</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 pb-10">Scheme Name: <strong>{{taxCertificate?.schemeName}}</strong></div>
+                <div class="col-md-3 pb-10">Amount: <strong>{{taxCertificate?.amount | currency: 'INR'}}</strong></div>
+                <div class="col-md-4 pb-10">Tax Benefit Amount:
+                    <strong>{{taxCertificate?.taxBenefitAmount | currency: 'INR'}}</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pb-10">Tax Benefit description :
+                    <strong>{{taxCertificate?.taxBenefitDescription}}</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pb-10">About Scheme: <strong>{{taxCertificate?.description}}</strong></div>
+            </div>
+        </div>
+        
     </div>
 </div>
